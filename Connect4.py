@@ -1,5 +1,6 @@
 import numpy as np
 import random
+import pandas as pd
 
 def empty_columns(A):
     empty = (A[0,:]==0)
@@ -79,12 +80,23 @@ def generate_boardstate(A,turn,policy):
         return "Error - Bad Policy choice!"
     return "The game is already over! Turn count too high"
     
-    
+
+def generate_random_boardstate(turncount,rows=6,columns=7):
+    A = np.zeros((rows,columns))
+    turn = 1
+    for i in range(0,turncount):
+        [A,turn]=generate_policy(A,turn)
+    return [A,turn]
 
 
-A = np.zeros((4,4))*2
-turn=1
-print(A)
-[A,turn]=generate_policy(A, turn)
-print(A)
+[A,turn]=generate_random_boardstate(10)
+print(np.reshape(A, (1,42))[0])
 print(turn)
+
+dataset = pd.read_csv('connect-4.csv')
+dataset = np.array(dataset)
+first_player = (dataset[0]=='x').astype(int)
+second_player = 2*(dataset[0]=='o').astype(int)
+d = np.reshape((first_player+second_player)[0:42],(7,6)).T
+print(d)
+print(dataset[0])
