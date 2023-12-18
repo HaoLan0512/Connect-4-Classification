@@ -11,4 +11,4 @@ To Do:
 Hao to add comments to existing code
 Michael to figure out how to check board states against the CSV
 
-To run the code: download CleanedData _pytorch.csv // Connect_4_Classification.pth // Connect 4 Final.ipynb
+# To run the code: download CleanedData _pytorch.csv // Connect_4_Classification.pth // Connect 4 Final.ipynb
